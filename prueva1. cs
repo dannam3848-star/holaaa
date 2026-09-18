@@ -1,20 +1,20 @@
 using System;
-class Jugador
+public class Jugador
 {
     public string nombre;
-    private string rol;
-    private int energia;
-    private int hambre;
-    private int paga;
+    public string rol;
+    public int energia;
+    public int hambre;
+    public int paga;
     public int tiempo;
-		
-		public void AsignarPersonaje(string nombreElegido, string herramienta, bool leGustaElTe)
+
+    public void AsignarPersonaje(string nombreElegido, string herramienta, bool haDormido)
     {
         nombre = nombreElegido;
 
         if (herramienta == "pistola")
         {
-            rol = "gurdia de pato precidencial";
+            rol = "guardia de pato presidencial";
             energia = 90;
             hambre = 50;
             paga = 70;
@@ -22,7 +22,7 @@ class Jugador
         }
         else if (herramienta == "diccionario")
         {
-            if (leGustaElTe)
+            if (haDormido)
             {
                 rol = "traductor de peces";
                 energia = 50;
@@ -30,15 +30,6 @@ class Jugador
                 paga = 40;
                 tiempo = 90;
             }
-			  if (herramienta == "alpiste")
-        {
-            rol = "entrenador de palomas";
-            energia = 90;
-            hambre = 50;
-            paga = 70;
-            tiempo = 60;
-        }
-	}
             else
             {
                 rol = "cuidador de plantas";
@@ -48,30 +39,41 @@ class Jugador
                 tiempo = 50;
             }
         }
-	}
-		
+        else if (herramienta == "alpiste")
+        {
+            rol = "entrenador de palomas";
+            energia = 90;
+            hambre = 50;
+            paga = 70;
+            tiempo = 60;
+        }
+        else
+        {
+            rol = "cuidador de plantas";
+            energia = 40;
+            hambre = 30;
+            paga = 100;
+            tiempo = 50;
+        }
+    }
+}
+
 public class Program
 {
-	public static void Main()
-	{
-	    Console.WriteLine($"Nombre: {nombre}");
-        Console.WriteLine($"rol: {rol}");
-        Console.WriteLine($"energia: {energia}");
-        Console.WriteLine($"hambre: {hambre}");
-        Console.WriteLine($"paga: {paga}");
-        Console.WriteLine($"tiempo: {tiempo}");
-		}
-	
-           ///por defaul
+    public static void mostrarJugador(Jugador player)
+    {
+        Console.WriteLine($"Nombre: {player.nombre}");
+        Console.WriteLine($"rol: {player.rol}");
+        Console.WriteLine($"energia: {player.energia}");
+        Console.WriteLine($"hambre: {player.hambre}");
+        Console.WriteLine($"paga: {player.paga}");
+        Console.WriteLine($"tiempo: {player.tiempo} min");
+    }
 
-          public class Program
-       {
-	     public static void Main()
-	   {
-		Jugador jugador1 = new Jugador();
-		jugador1.AsignarPersonaje("idia", "alpiste", true); 
-        jugador1.MostrarPersonaje();	
-
-	}
-	}
+    public static void Main()
+    {
+        Jugador jugador1 = new Jugador();
+        jugador1.AsignarPersonaje("idia", "alpiste", true);
+        mostrarJugador(jugador1);
+    }
 }
