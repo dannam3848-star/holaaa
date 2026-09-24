@@ -1,0 +1,709 @@
+using System;
+public class Jugador
+{
+    public string nombre;
+    public string rol;
+    public int energia;
+    public int hambre;
+    public int paga;
+    public int tiempo;
+	
+	  int[] guardiaDePatoPresidencial = { 90, 50, 100, 5 };
+	  int[] traductorDePeces = { 30, 20, 20, 3 };
+	  int[] entrenadorDePalomas = { 60, 30, 10, 5 };
+	  int[] repartidorDePaquetes = { 80, 80, 50, 2 };
+	  int[] cuidadoDePlantas = { 50, 40, 30, 8 };	
+	  
+	  public Jugador (string nombreElegido, string  rolTemp){
+			  nombre = nombreElegido;
+			  rol = rolTemp;
+		  	asignarCaracteristicas ();
+			 
+		}
+	
+     private void asignarCaracteristicas()
+	 {
+		
+	   if (rol == "guardia de pato presidencial"){
+	   		energia =  guardiaDePatoPresidencial[0]; 
+		    hambre = guardiaDePatoPresidencial[1]; 
+			paga = guardiaDePatoPresidencial[2]; 
+	        tiempo = guardiaDePatoPresidencial[3]; 
+	      }
+	   else if (rol == "traductor de peces"){
+	   		energia =  traductorDePeces[0]; 
+		    hambre = traductorDePeces[1]; 
+			paga = traductorDePeces[2]; 
+	        tiempo = traductorDePeces[3]; 
+	      }
+		 else if (rol == "entrenador de palomas"){
+	   		energia =  entrenadorDePalomas [0]; 
+		    hambre = entrenadorDePalomas [1]; 
+			paga = entrenadorDePalomas [2]; 
+	        tiempo = entrenadorDePalomas [3]; 
+	      }
+		  else if (rol == "Repartidor de paquetes"){
+	   		energia =   repartidorDePaquetes[0]; 
+		    hambre =   repartidorDePaquetes[1]; 
+			paga =   repartidorDePaquetes[2]; 
+	        tiempo =  repartidorDePaquetes [3]; 
+	      }
+		  else 
+		  { 
+	   		energia =   repartidorDePaquetes[0]; 
+		    hambre =   repartidorDePaquetes[1]; 
+			paga =   repartidorDePaquetes[2]; 
+	        tiempo =  repartidorDePaquetes [3]; 
+	      }
+	 }
+	public void mostrarPersoanje()
+	{
+		Console.Write($"Rol:{rol}  ");
+		Console.Write($"nombre:{nombre}  ");
+		Console.Write($"Energia:{energia}  ");
+		Console.Write($"Hambre:{hambre}  ");
+		Console.Write($"Paga: {paga}  ");
+		Console.Write($"Tiempo: {tiempo}  ");
+	}
+	
+}
+
+public class Program
+{
+	public static string trabajos ()
+		{	
+			string herramienta;
+			Console.Write("Escoge tu herramienta:  ");
+       		herramienta = Console.ReadLine();
+			string rol;
+
+			  if (herramienta == "pistola") rol = "guardia de pato presidencial";
+			  else if (herramienta == "diccionario") rol = "traductor de peces";
+			  else if (herramienta == "alpiste") rol = "entrenador de palomas";
+			  else if (herramienta == "pistola de etiquetar") rol = " Repartidor de paquetes";
+			  else  {rol = "cuidador de plantas";}	
+			  return rol; 
+		}
+
+
+    // =========================================================
+    // RUTA DEL PATO
+    // =========================================================
+
+    public static void RutaPato()
+    {
+        Console.Clear();
+
+        Console.WriteLine("======================================");
+        Console.WriteLine(" GUARDAESPALDAS DEL PATO PRESIDENCIAL");
+        Console.WriteLine("======================================");
+        Console.WriteLine();
+        Console.WriteLine("Has conseguido un extraño trabajo.");
+        Console.WriteLine("Tu misión es proteger al pato presidencial");
+        Console.WriteLine("durante los próximos 7 días.");
+        Console.WriteLine();
+
+        Console.WriteLine("Presiona ENTER para comenzar...");
+        Console.ReadLine();
+
+        // Nombres de los días
+        string[] dias =
+        {
+            "DÍA 1 — EL PATO",
+            "DÍA 2 — LA REUNIÓN",
+            "DÍA 3 — LA FUENTE",
+            "DÍA 4 — LA CONSPIRACIÓN",
+            "DÍA 5 — EL PRESIDENTE",
+            "DÍA 6 — LA VÍSPERA",
+            "DÍA 7 — LA CONFERENCIA"
+        };
+
+        // Narraciones
+        string[] narraciones =
+        {
+            "Tu primer día comienza frente al pato presidencial. Parece tranquilo, pero nadie te explica exactamente de qué debes protegerlo.",
+
+            "El pato tiene una reunión importante. Varias personas importantes están entrando al edificio mientras el pato camina tranquilamente hacia la puerta.",
+
+            "El pato ha encontrado una fuente y parece extremadamente interesado en jugar con el agua.",
+
+            "Algo extraño está ocurriendo. Has escuchado rumores sobre una conspiración relacionada con el presidente y el pato.",
+
+            "El presidente finalmente aparece. Al verte junto al pato, se acerca y te hace una propuesta inesperada.",
+
+            "Mañana será la gran conferencia. Todo debe estar preparado y el pato no puede sufrir ningún accidente.",
+
+            "Llegó el día de la conferencia. Hay periodistas, políticos y personas importantes por todas partes. El pato está en el centro de todo."
+        };
+
+        // Las 4 opciones de cada día
+        string[][] decisiones =
+        {
+            new string[]
+            {
+                "A) Seguir al pato a todas partes.",
+                "B) Buscar un lugar donde sentarte mientras lo vigilas.",
+                "C) Comprar comida mientras vigilas al pato.",
+                "D) Decidir que el pato puede cuidarse solo."
+            },
+
+            new string[]
+            {
+                "A) Entrar detrás del pato a la reunión.",
+                "B) Sacar al pato inmediatamente del edificio.",
+                "C) Comprar comida para el pato.",
+                "D) Sentarte y esperar afuera."
+            },
+
+            new string[]
+            {
+                "A) Dejar que el pato juegue en la fuente.",
+                "B) Sacarlo inmediatamente de la fuente.",
+                "C) Sentarte mientras el pato juega.",
+                "D) Comprar comida mientras el pato juega."
+            },
+
+            new string[]
+            {
+                "A) Quedarte al lado del pato.",
+                "B) Sentarte detrás del escenario.",
+                "C) Comprar comida.",
+                "D) Descansar cerca del lugar."
+            },
+
+            new string[]
+            {
+                "A) Aceptar el pago especial.",
+                "B) Preguntar cuánto trabajo tendrás que hacer.",
+                "C) Rechazar la oferta.",
+                "D) Pedir comida y dinero."
+            },
+
+            new string[]
+            {
+                "A) Entrenar siguiendo al pato durante todo el día.",
+                "B) Preparar todo y descansar.",
+                "C) Comprar equipo para la conferencia.",
+                "D) No hacer nada."
+            },
+
+            new string[]
+            {
+                "A) Pararte junto al pato.",
+                "B) Colocarte detrás del presidente.",
+                "C) Sentarte en una esquina.",
+                "D) Comer antes de la conferencia."
+            }
+        };
+
+
+        // Resultados de cada elección
+        string[][] resultados =
+        {
+            new string[]
+            {
+                "Pasas todo el día siguiendo al pato. Terminas agotado, pero no lo pierdes de vista ni un segundo.",
+                "Encuentras un banco cercano. Desde allí puedes vigilar al pato mientras descansas.",
+                "Compras algo de comida. El pato parece interesado en compartirla contigo.",
+                "Te alejas un poco. El pato inmediatamente comienza a caminar hacia un lugar desconocido."
+            },
+
+            new string[]
+            {
+                "Entras detrás del pato. Todos los presentes se quedan mirándote, pero consigues mantenerte cerca de él.",
+                "Intentas sacar al pato. El animal no parece estar de acuerdo con tu decisión.",
+                "Sales a comprar comida. Cuando vuelves, el pato sigue exactamente donde estaba.",
+                "Te sientas afuera y esperas. La reunión parece durar muchísimo tiempo."
+            },
+
+            new string[]
+            {
+                "Dejas que el pato juegue. Parece estar teniendo el mejor día de su vida.",
+                "Intentas sacar al pato de la fuente. El pato se resiste con todas sus fuerzas.",
+                "Te sientas cerca mientras juegas de espectador. Por alguna razón, el pato parece confiar en ti.",
+                "Compras comida mientras vigilas desde lejos. El pato sigue jugando tranquilamente."
+            },
+
+            new string[]
+            {
+                "Te mantienes junto al pato. Algo extraño ocurre cerca del escenario, pero consigues mantenerlo protegido.",
+                "Desde detrás del escenario escuchas conversaciones sospechosas.",
+                "Sales a comprar comida. Cuando regresas, parece que algo importante ocurrió mientras estabas fuera.",
+                "Descansas cerca del lugar. Por primera vez en días consigues recuperar un poco de energía."
+            },
+
+            new string[]
+            {
+                "Aceptas el pago especial. El presidente parece satisfecho con tu trabajo.",
+                "Preguntas cuánto tendrás que trabajar. El presidente responde que el trabajo vale $600.",
+                "Rechazas la oferta. El presidente se queda sorprendido por tu decisión.",
+                "Pides comida y dinero. El presidente acepta darte comida y $300."
+            },
+
+            new string[]
+            {
+                "Pasas todo el día entrenando mientras sigues al pato. No puedes permitirte perderlo de vista.",
+                "Preparas todo lo necesario y finalmente tienes tiempo para descansar.",
+                "Compras equipo para estar preparado para la conferencia.",
+                "Decides no hacer nada. El día pasa tranquilamente."
+            },
+
+            new string[]
+            {
+                "Te colocas junto al pato. Los periodistas inmediatamente comienzan a prestar atención.",
+                "Te colocas detrás del presidente para protegerlo también.",
+                "Te sientas en una esquina y observas todo lo que sucede.",
+                "Comes antes de que empiece la conferencia. Necesitas estar preparado."
+            }
+        };
+
+
+        // =====================================================
+        // RECORRIDO DE LOS 7 DÍAS
+        // =====================================================
+
+        for (int dia = 0; dia < 7; dia++)
+        {
+            Console.Clear();
+
+            Console.WriteLine("======================================");
+            Console.WriteLine(dias[dia]);
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            Console.WriteLine(narraciones[dia]);
+            Console.WriteLine();
+
+            Console.WriteLine("¿Qué quieres hacer?");
+            Console.WriteLine();
+
+            for (int opcion = 0; opcion < 4; opcion++)
+            {
+                Console.WriteLine(decisiones[dia][opcion]);
+            }
+
+            Console.WriteLine();
+            Console.Write("Elige A, B, C o D: ");
+
+            string eleccion = Console.ReadLine().ToUpper();
+
+            while (eleccion != "A" &&
+                   eleccion != "B" &&
+                   eleccion != "C" &&
+                   eleccion != "D")
+            {
+                Console.Write("Opción inválida. Elige A, B, C o D: ");
+                eleccion = Console.ReadLine().ToUpper();
+            }
+
+            int indice = 0;
+
+            if (eleccion == "A")
+            {
+                indice = 0;
+            }
+            else if (eleccion == "B")
+            {
+                indice = 1;
+            }
+            else if (eleccion == "C")
+            {
+                indice = 2;
+            }
+            else if (eleccion == "D")
+            {
+                indice = 3;
+            }
+
+            Console.Clear();
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("RESULTADO");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            Console.WriteLine(resultados[dia][indice]);
+
+            Console.WriteLine();
+            Console.WriteLine("Presiona ENTER para continuar...");
+            Console.ReadLine();
+        }
+
+        // =====================================================
+        // DECISIÓN FINAL
+        // =====================================================
+
+        Console.Clear();
+
+        Console.WriteLine("======================================");
+        Console.WriteLine(" EL MOMENTO FINAL");
+        Console.WriteLine("======================================");
+        Console.WriteLine();
+
+        Console.WriteLine("La conferencia está a punto de comenzar.");
+        Console.WriteLine("El pato se acerca a ti y comienza a caminar hacia una");
+        Console.WriteLine("puerta que nadie más parece haber notado.");
+        Console.WriteLine();
+
+        Console.WriteLine("¿Qué haces?");
+        Console.WriteLine();
+
+        Console.WriteLine("A) Tomar al pato y protegerlo.");
+        Console.WriteLine("B) Dejar que el pato hable.");
+        Console.WriteLine("C) Correr junto al pato.");
+        Console.WriteLine("D) Preguntar qué está ocurriendo.");
+
+        Console.WriteLine();
+        Console.Write("Elige A, B, C o D: ");
+
+        string final = Console.ReadLine().ToUpper();
+
+        Console.Clear();
+
+        if (final == "A")
+        {
+            Console.WriteLine("Proteges al pato hasta el último segundo.");
+        }
+        else if (final == "B")
+        {
+            Console.WriteLine("Decides confiar en el pato y dejar que se explique.");
+        }
+        else if (final == "C")
+        {
+            Console.WriteLine("Corres junto al pato sin saber exactamente hacia dónde van.");
+        }
+        else
+        {
+            Console.WriteLine("Preguntas qué está ocurriendo. Nadie te da una respuesta.");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Has terminado la ruta del Guardaespaldas del Pato.");
+        Console.WriteLine();
+        Console.WriteLine("Presiona ENTER para continuar...");
+        Console.ReadLine();
+    }
+
+
+    // =========================================================
+    // RUTA DEL CUIDADOR DE PLANTAS
+    // =========================================================
+
+    public static void RutaPlantas()
+    {
+        Console.Clear();
+
+        Console.WriteLine("======================================");
+        Console.WriteLine(" CUIDADOR DE PLANTAS");
+        Console.WriteLine("======================================");
+        Console.WriteLine();
+        Console.WriteLine("Has conseguido un trabajo cuidando un jardín.");
+        Console.WriteLine("El dueño te advierte que algunas plantas son...");
+        Console.WriteLine("bastante extrañas.");
+        Console.WriteLine();
+
+        Console.WriteLine("Presiona ENTER para comenzar...");
+        Console.ReadLine();
+
+        string[] dias =
+        {
+            "DÍA 1 — LAS PLANTAS",
+            "DÍA 2 — EL PROBLEMA",
+            "DÍA 3 — LA PLANTA MÁS RARA",
+            "DÍA 4 — EL JARDÍN",
+            "DÍA 5 — LAS PLANTAS QUIEREN ALGO",
+            "DÍA 6 — LA INVASIÓN",
+            "DÍA 7 — EL DUEÑO"
+        };
+
+        string[] narraciones =
+        {
+            "Llegas al jardín por primera vez. Hay plantas por todas partes y algunas tienen pequeños carteles de advertencia.",
+
+            "Algo extraño sucede con las plantas. Varias parecen haberse movido durante la noche.",
+
+            "Encuentras una planta que no se parece a ninguna otra. Su apariencia resulta bastante inquietante.",
+
+            "El jardín necesita mantenimiento. El dueño te deja decidir cuánto tiempo quieres dedicarle al trabajo.",
+
+            "Las plantas parecen necesitar algo más que agua. El problema es que nadie te dijo exactamente qué necesitan.",
+
+            "Cuando llegas al jardín descubres que las plantas se han extendido por todas partes.",
+
+            "El dueño finalmente regresa para comprobar cómo ha quedado el jardín."
+        };
+
+        string[][] decisiones =
+        {
+            new string[]
+            {
+                "A) Regar todas las plantas.",
+                "B) Regar solamente las plantas pequeñas.",
+                "C) Sentarte durante 5 minutos.",
+                "D) Tocar la planta que dice 'NO TOCAR'."
+            },
+
+            new string[]
+            {
+                "A) Mover todas las plantas.",
+                "B) Mover solamente las plantas grandes.",
+                "C) Regarlas y esperar.",
+                "D) Ignorar el problema."
+            },
+
+            new string[]
+            {
+                "A) Regarla.",
+                "B) No tocarla.",
+                "C) Preguntarle al jefe.",
+                "D) Alejarte de ella."
+            },
+
+            new string[]
+            {
+                "A) Trabajar durante 4 horas.",
+                "B) Trabajar durante 2 horas.",
+                "C) Trabajar durante 1 hora.",
+                "D) Descansar."
+            },
+
+            new string[]
+            {
+                "A) Comprar fertilizante.",
+                "B) Comprar tierra nueva.",
+                "C) No comprar nada.",
+                "D) Comprar todo."
+            },
+
+            new string[]
+            {
+                "A) Trabajar durante 5 horas.",
+                "B) Trabajar durante 3 horas.",
+                "C) Trabajar durante 1 hora.",
+                "D) Sentarte y esperar."
+            },
+
+            new string[]
+            {
+                "A) Trabajar durante 5 horas.",
+                "B) Trabajar durante 3 horas.",
+                "C) Trabajar durante 1 hora.",
+                "D) No trabajar y descansar."
+            }
+        };
+
+
+        string[][] resultados =
+        {
+            new string[]
+            {
+                "Riegas todas las plantas. Algunas parecen agradecerlo... de una manera bastante extraña.",
+                "Solo riegas las pequeñas. Las grandes tendrán que esperar.",
+                "Te sientas durante cinco minutos. El jardín permanece completamente tranquilo.",
+                "Tocas la planta prohibida. Algo dentro de la planta se mueve."
+            },
+
+            new string[]
+            {
+                "Mueves todas las plantas. El jardín termina completamente reorganizado.",
+                "Mueves las plantas grandes y dejas las demás donde estaban.",
+                "Riegas las plantas y esperas para ver qué sucede.",
+                "Decides ignorar el problema. Quizás mañana desaparezca."
+            },
+
+            new string[]
+            {
+                "Riegas la planta extraña. Sus hojas comienzan a moverse.",
+                "Decides no tocarla. Probablemente sea lo más sensato.",
+                "Le preguntas al jefe qué ocurre con ella. Su respuesta no te tranquiliza.",
+                "Te alejas de la planta y finges que nunca la viste."
+            },
+
+            new string[]
+            {
+                "Trabajas durante cuatro horas. El jardín queda mucho más ordenado.",
+                "Trabajas durante dos horas. Haces bastante trabajo sin agotarte demasiado.",
+                "Trabajas solamente una hora.",
+                "Decides descansar. El jardín puede esperar."
+            },
+
+            new string[]
+            {
+                "Compras fertilizante para las plantas. Parecen reaccionar inmediatamente.",
+                "Cambias la tierra de varias plantas.",
+                "Decides no gastar dinero. Las plantas tendrán que arreglárselas.",
+                "Compras todo lo que crees necesario."
+            },
+
+            new string[]
+            {
+                "Trabajas durante cinco horas intentando controlar la invasión.",
+                "Trabajas durante tres horas y consigues controlar parte del jardín.",
+                "Trabajas solamente una hora antes de rendirte.",
+                "Te sientas y observas cómo las plantas continúan extendiéndose."
+            },
+
+            new string[]
+            {
+                "Trabajas durante cinco horas para dejar el jardín perfecto.",
+                "Trabajas tres horas y dejas el resto para después.",
+                "Trabajas una hora y decides que ya es suficiente.",
+                "No trabajas y aprovechas el día para descansar."
+            }
+        };
+
+
+        // =====================================================
+        // RECORRIDO DE LOS 7 DÍAS
+        // =====================================================
+
+        for (int dia = 0; dia < 7; dia++)
+        {
+            Console.Clear();
+
+            Console.WriteLine("======================================");
+            Console.WriteLine(dias[dia]);
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            Console.WriteLine(narraciones[dia]);
+            Console.WriteLine();
+
+            Console.WriteLine("¿Qué quieres hacer?");
+            Console.WriteLine();
+
+            for (int opcion = 0; opcion < 4; opcion++)
+            {
+                Console.WriteLine(decisiones[dia][opcion]);
+            }
+
+            Console.WriteLine();
+            Console.Write("Elige A, B, C o D: ");
+
+            string eleccion = Console.ReadLine().ToUpper();
+
+            while (eleccion != "A" &&
+                   eleccion != "B" &&
+                   eleccion != "C" &&
+                   eleccion != "D")
+            {
+                Console.Write("Opción inválida. Elige A, B, C o D: ");
+                eleccion = Console.ReadLine().ToUpper();
+            }
+
+            int indice = 0;
+
+            if (eleccion == "A")
+            {
+                indice = 0;
+            }
+            else if (eleccion == "B")
+            {
+                indice = 1;
+            }
+            else if (eleccion == "C")
+            {
+                indice = 2;
+            }
+            else
+            {
+                indice = 3;
+            }
+
+            Console.Clear();
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("RESULTADO");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            Console.WriteLine(resultados[dia][indice]);
+
+            Console.WriteLine();
+            Console.WriteLine("Presiona ENTER para continuar...");
+            Console.ReadLine();
+        }
+
+
+        // =====================================================
+        // DECISIÓN FINAL
+        // =====================================================
+
+        Console.Clear();
+
+        Console.WriteLine("======================================");
+        Console.WriteLine(" LA ÚLTIMA DECISIÓN");
+        Console.WriteLine("======================================");
+        Console.WriteLine();
+
+        Console.WriteLine("Después de siete días, encuentras una puerta");
+        Console.WriteLine("oculta detrás de una enorme planta.");
+        Console.WriteLine();
+
+        Console.WriteLine("¿Qué haces?");
+        Console.WriteLine();
+
+        Console.WriteLine("A) Entrar por la puerta de la planta.");
+        Console.WriteLine("B) Negarte a entrar.");
+        Console.WriteLine("C) Regar la planta.");
+        Console.WriteLine("D) Abandonar el trabajo.");
+
+        Console.WriteLine();
+        Console.Write("Elige A, B, C o D: ");
+
+        string final = Console.ReadLine().ToUpper();
+
+        Console.Clear();
+
+        if (final == "A")
+        {
+            Console.WriteLine("Entras por la puerta y descubres algo que jamás esperabas.");
+        }
+        else if (final == "B")
+        {
+            Console.WriteLine("Decides que ya has tenido suficientes problemas con estas plantas.");
+        }
+        else if (final == "C")
+        {
+            Console.WriteLine("Riegas la planta una última vez. El jardín queda completamente tranquilo.");
+        }
+        else
+        {
+            Console.WriteLine("Abandonas el trabajo y no vuelves a mirar atrás.");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Has terminado la ruta del Cuidador de Plantas.");
+        Console.WriteLine();
+        Console.WriteLine("Presiona ENTER para continuar...");
+        Console.ReadLine();
+    }
+	
+	
+	public static void Main()
+	{
+		
+		
+		Console.Write("Escribe tu nombre: ");
+        string nombre = Console.ReadLine();                       
+		string rol = trabajos();
+		Jugador player = new Jugador(nombre, rol);
+		player.mostrarPersoanje();
+
+
+        // =====================================================
+        // AQUÍ SE DIVIDEN LAS DOS RUTAS
+        // =====================================================
+
+        if (rol == "guardia de pato presidencial")
+        {
+            RutaPato();
+        }
+        else if (rol == "cuidador de plantas")
+        {
+            RutaPlantas();
+        }
+		
+		
+	}
+}
